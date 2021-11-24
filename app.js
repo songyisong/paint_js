@@ -1,6 +1,8 @@
 const canvas = document.getElementById("jsCanvas");
 const ctx = canvas.getContext("2d");
 const colors = document.getElementsByClassName("jsColor");
+const range = document.getElementById("jsRange");
+const mode = document.getElementById("jsMode");
 
 ctx.strokeStyle = "#2c2c2c"; //컬러나 스타일을 넣을 수 있음.
 ctx.lineWidth = 3.5; //픽셀을 다룰 수 있음.
@@ -57,6 +59,21 @@ function handleColorClick(event){
 	//console.log(color);
 };
 
+function handleRangeChange(event){
+	//console.log(event.target.value);
+	const size = event.target.value;
+	ctx.lineWidth = size;
+}
+
+function handleModeClick(){
+	if(filling === true){
+		filling = false;
+		mode.innerText = "Fill"
+	} else {
+		filling = true;
+		mode.innerText = "paing";
+	}
+}
 
 if(canvas){
 	canvas.addEventListener("mousemove", onMouseMove);
@@ -70,3 +87,11 @@ if(canvas){
 Array.from(colors).forEach(color =>
 	color.addEventListener("click", handleColorClick)
 );
+
+// if(colors){
+	
+// };
+
+if(range){
+	range.addEventListener("input", handleRangeChange);
+};
