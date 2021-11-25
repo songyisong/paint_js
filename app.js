@@ -4,14 +4,24 @@ const colors = document.getElementsByClassName("jsColor");
 const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
 
-ctx.strokeStyle = "#2c2c2c"; //컬러나 스타일을 넣을 수 있음.
-ctx.lineWidth = 3.5; //픽셀을 다룰 수 있음.
+const INITIAL_COLOR = "#2c2c2c"
+const CANVAS_SIZE = 400;
 
 //캔버스 사이즈 정해주기
-canvas.width = 800;
-canvas.height = 800;
+canvas.width = CANVAS_SIZE;
+canvas.height = CANVAS_SIZE;
+
+ctx.fillStyle = "white";
+ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+
+ctx.strokeStyle = INITIAL_COLOR; //컬러나 스타일을 넣을 수 있음.
+ctx.fillStyle = INITIAL_COLOR;
+//ctx.fillRect(50, 20, 100, 49);
+ctx.lineWidth = 3.5; //픽셀을 다룰 수 있음.
+
 
 let painting = false;
+let filling = false;
 
 function stopPainting(){
 	painting = false;
@@ -31,7 +41,7 @@ function onMouseMove(event){
 		ctx.beginPath();
 		ctx.moveTo(x, y);
 	} else {
-		console.log("creating line in ", x, y)
+		//console.log("creating line in ", x, y)
 		ctx.lineTo(x, y); //호출하기
 		ctx.stroke();
 		//ctx.closePath();
@@ -56,6 +66,7 @@ function handleColorClick(event){
 	// console.log(event.target.style);
 	const color = event.target.style.backgroundColor;
 	ctx.strokeStyle = color;
+	ctx.fillStyle = color;
 	//console.log(color);
 };
 
@@ -65,21 +76,35 @@ function handleRangeChange(event){
 	ctx.lineWidth = size;
 }
 
-function handleModeClick(){
+function handleModeClick() {
 	if(filling === true){
 		filling = false;
-		mode.innerText = "Fill"
+		mode.ineerText = "Fill"
 	} else {
 		filling = true;
-		mode.innerText = "paing";
+		mode.innerText = "Paint"
 	}
-}
+	//return ;
+};
+
+function handleCanvasClick() {
+	// ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+	if(filling){
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+	}
+};
+
+function handleCM(event) {
+	console.log(event);
+};
 
 if(canvas){
 	canvas.addEventListener("mousemove", onMouseMove);
 	canvas.addEventListener("mousedown", startPainting);
 	canvas.addEventListener("mouseup", stopPainting);
 	canvas.addEventListener("mouseleave", stopPainting);
+	canvas.addEventListener("click", handleCanvasClick);
+	canvas.addEventListener("contextmenu", handleCM);
 };
 
 //console.log(Array.from(colors));
@@ -95,3 +120,7 @@ Array.from(colors).forEach(color =>
 if(range){
 	range.addEventListener("input", handleRangeChange);
 };
+
+if(mode){
+	mode.addEventListener("click", handleModeClick);
+}
