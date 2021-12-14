@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Counter</title>
+</head>
+<body>
+	<div id="counter">0</div>
+	<button id="increase">+</button>
+	<button id="decrease">-</button>
+
+	<!-- <div class="scroll-table">
+		<div>
+			<table>
+				<caption><span class="hidden">테이블 요약 정보</span></caption>
+				<thead>
+					<tr>
+						<th scope="col">col 1</th>
+						<th scope="col">col 2</th>
+						<th scope="col">col 3</th>
+					</tr>
+				</thead>
+							
+				<tbody>
+					
+					<tr>
+						<td>width: 25%; height:40px </td>
+						<td>-</td>
+						<td>-</td>
+					</tr>
+					
+				~~~
+					<tr>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div> -->
+
+	<script>
+		//에러발생 코드
+		// +나, - 버튼을 클릭하면 에러가생김.
+		// const $counter = document.getElementById('counter-x');
+		// const $increase = documnet.getElementById('increase');
+		// const $decrease = document.getElementById('decrease');
+
+		// let num = 0;
+
+		// const render = function(){ $counter.innerHTML = num};
+		
+		// $increase.onClick = function(){
+		// 	num++;
+		// 	console.log('increase button click', num);
+		// 	render();
+		// };
+		
+		// $decrease.onClick = function(){
+		// 	num--;
+		// 	console.log('decrease button click', num);
+		// 	render();
+		// }
+
+
+	//body 요소 가장 아래 자바스크립트를 위치시키는 것은,
+	// 1.HTML요소들이 스크립트 로딩지연으로 인해 렌더링에 지장 받는 일이 발생하지않아 페이지 로딩 시간이 단축.
+	// 2. DOM이 완성되지않은 상태에서 자바스크립트가 DOM을 조작한다면 에러가 발생.
+	
+	var num1 = 1011;
+	var num2 = 10.40;
+
+	//string
+	var string1 = 'hello';
+	var scring2 = 'World';
+
+	//Boolean
+	var bool = true;
+
+	//null
+	var foo = null;
+
+	//undefined
+	var bar;
+	
+	//object
+	var obj = {name:'song', gender:'female'};
+
+	//Array
+	var array = [1,2,3,4,5];
+
+	//function
+	var foo = function() {};
+	
+	//연산자
+	//산술 연산자
+	var area = 5 * 4; //20
+
+	//문자열 연결 연산자
+	var str = 'My job is ' + 'web publisher' //My job is webpublisher
+	
+	//할당 연산자
+	var color = 'purple'; //purple
+
+	//비교 연산자
+	var foo = 3 > 7 //false
+	var foo = 1 + '10'; // 110
+
+	//논리 연산자
+	var bar = ( 5 > 3 ) && ( 2 < 4) //true
+	var bar = 1 * '10'; // 10
+
+	//타입 연산자
+	var type = typeof 'hi'; //'string'
+	
+	//인스턴트 생성 연산자
+	var today = new Date(); //Thu Dec 09 2021 14:04:09 GMT+0900 (한국 표준시)
+	//console.log(today);
+
+	// 변수의 선언
+	var x = 5 + 6;
+
+	//함수의 선언
+	function foo (arg) {
+		//선언한 함수의 종료 및 값의 반환..
+		return ++arg
+	};
+
+	var i = 0;
+	while (1) {
+		if (i > 5){
+			//반복문 탈출..
+			break;
+		}
+		//console.log(i);
+		i++;
+	};
+
+	//선언문
+	var x = 5 *10; //표현식 x = 5 * 10을 포함하는 문.
+	//할당문
+	x = 100; //이 자체가 표현식이지만 완전한 문이기도함..
+
+	//함수
+	function square(number) {
+		return number * number;
+	}
+	//함수의 호출
+	square(2); //4번.
+	//동일한 작업을 반복적으로 수행해야한다면, 동일한 구분을 중복작성하지않고 정의되어있는 함수를 재사용하는것이 효율적.
+
+	//객체
+	// var person = {
+	// 	name : 'song',
+	// 	gender: 'female',
+	// 	sayHello : function(){
+	// 		console.log('hi my name is ' + this.name);
+	// 	}
+	// };
+
+	// console.log(typeof person); // object
+	// console.log(person); // { name: 'Lee', gender: 'male', sayHello: [Function: sayHello] }
+
+	// person.sayHello(); // Hi! My name is Lee
+
+	//객체는 데이터를 의미하는 프로퍼티와 데이터를 참조하고 조작할 수 있는 동작을 의미하는 매소드로 구성된 집합.
+
+	//배열
+	var arr = [1,2,3,4,5];
+	//console.log(arr[3]);
+
+	//원시타입과 객체타입 
+	//boolean, null, underfined,number(숫자),string(문자열),symbol : strong과 number는 비슷해보이지만, 숫자타입의 값은 주로 산술연산자를, 문자타입의 값은 텍스트출력으로 이용
+	//object
+
+	//객체 리터럴
+	// var emptyObject = {};
+	// console.log(typeof emptyObject);
+	
+	// var person = {
+	// 	name:'ssong',
+	// 	gender: 'female',
+	// 	sayHello: function(){
+	// 		console.log('Hi~ my name is ' + this.name)
+	// 	}	
+	// };
+
+	// console.log(typeof person);
+	// console.log(person);
+	
+	// person.sayHello();
+
+	//Object 생성자 함수 호출.
+	// var person = new Object();
+	
+	// person.name = 'ssong';
+	// person.gender = 'female';
+	// person.sayHello = function () {
+	// 	console.log('hi~ my name is ' + this.name);
+	// };	
+
+	// console.log(typeof person); // object
+	// console.log(person); // {name: "Lee", gender: "male", sayHello: ƒ}
+
+	// person.sayHello(); // Hi! My name is Lee
+
+
+	//함수 리터럴방식 function생성자 함수로 함수를 생성하기. > 일반적으로 사용하지않음..
+	//new Function(arg1,arg2,argN, functionBody);
+
+	// var square = new Function('number', 'return number * number' );
+	// console.log(square(10));
+
+
+	//객체 프로퍼티 접근 : 프로퍼티 키는 문자열이므로 따옴표를 사용한다..
+	// 하단과같이 객체에 존재하지 않는 프로퍼티를 참조하면 undefined를 반환한다.
+	// var person = {
+	// 	'first-name' : 'Ung-mo',
+	// 	'last-name' : 'Lee',
+	// 	gender : 'male',
+	// 	1: 10,
+	// 	function : 1 //예약어는 사용하지말기..
+
+	// }
+	// console.log(person.age);
+	
+	//프로퍼티 값 갱신하기.
+	// var person = {
+	// 	'first-name' : 'Ung-mo',
+	// 	'last-name' : 'Song',
+	// 	gender: 'female',
+	// };
+
+	// person['first-name'] = 'Song';
+	// console.log(person['first-name']);
+
+	
+	//프로퍼티 동적 생성
+	// var person = {
+	// 	'first-name' : 'Song-yi',
+	// 	'last-name' : 'Song',
+	// 	gender : 'female',
+	// };
+
+	// person.age = 34;
+	// console.log(person.age);
+
+	// delete person.gender; //delete 연산자를 사용하면, 객체의 프로퍼티를 삭제할 수 있음!!
+	// console.log(person);
+
+
+	//for-in 문 사용...어렵 ㅠㅠ
+	// var person = {
+	// 	'first-name' : 'Song-yi',
+	// 	'last-name' : 'Song',
+	// 	gender : 'female',
+	// };
+
+	// for (var prop in person){
+	// 	console.log(prop + ': ' + person[prop]);
+	// };
+
+	// //배열에 사용하면 안좋은 예...
+	// var array = ['one', 'two'];
+
+	// for (var index in array){
+	// console.log(index + ': ' + array[index])};
+
+	//ES6에서 for-of문이 추가되었다.(for-in문의 단점 극뽁)
+	//잘모르겟듬...
+
+	//Pass-by-reference
+	//foo 객체를 리터럴 방식으로 생성. 
+	// var foo = {
+	// 	val :30
+	// }
+
+	// var bar = foo;
+
+	// console.log(foo.val, bar.val);
+	// console.log(foo === bar); //true
+
+	//변수 foo,bar는 내용은 같지만 별개의 객체를 생성하여 참조값을 할당하였기에.. 동일하지않다.
+	var foo = {val:10};
+	var bar = {val:10};
+
+	console.log(foo.val, bar.val);
+	console.log(foo === bar); //false
+
+	var baz = bar;
+	console.log(baz.val, bar.val);
+	console.log(baz === bar);
+	//https://poiemaweb.com/js-object 여기부터 다시 시작.
+	</script>
+</body>
+
+</html>
